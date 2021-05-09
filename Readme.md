@@ -5,6 +5,8 @@ Moe is a set of C++ classes that simplifies the creation of an OpenGL applicatio
 
 ## Create an OpenGL application
 
+The example below shows how to create a small OpenGL-based app called MyApplication. First, create <code>class MyApplication</code> and inherit <code>class Engine</code>. Then, implement the virtual functions.
+
 <code> MyApplication.h</code>
 ```C++
 # include "Engine.h"
@@ -41,7 +43,7 @@ void MyApplication::RendorScene()
 }
 ```
 
-<code>main.cpp</code>
+In <code>main.cpp</code>, run <code> MyApplication</code> as such:
 ```C++
 #include "MyApplication.h"
 
@@ -54,6 +56,8 @@ int main ()
     app.Run();
 }
 ```
+
+It is recommended to take a look at the header files to understand what each class does.
 
 ## Dependencies 
 
