@@ -1,11 +1,29 @@
 # Moe - Minimalist OpenGL Engine
 
-Moe is a set of C++ classes that simplifies the creation of an OpenGL application. It provides a easy method to load shaders and textures based on TOML file provided. It allows developers to focus on creating the application rather than micro-managing each file.
+Moe is a set of C++ classes that simplifies the creation of an OpenGL application. It provides a easy method to load shaders and textures using a TOML file provided. It allows developers to focus on creating the application rather than micro-managing each file.
 
 
 ## Create an OpenGL application
 
-The example below shows how to create a small OpenGL-based app called MyApplication. First, create <code>class MyApplication</code> and inherit <code>class Engine</code>. Then, implement the virtual functions.
+The example below shows how to create a small OpenGL-based app called MyApplication. First, create create *settings.toml* as shown below.
+
+<code>settings.toml</code>
+```toml
+[shaders]
+
+    # The shader program will be named shader1
+    [shaders.shader1]
+    vert = "vert_shader.vert"
+    frag = "frag_shader.frag"
+
+
+[textures]
+
+# The texture will be named texture1
+texture1 = "dirt.jpg"
+```
+
+Then, create *class MyApplication* and inherit *class Engine*. Implement the virtual functions.
 
 <code> MyApplication.h</code>
 ```C++
@@ -43,17 +61,21 @@ void MyApplication::RendorScene()
 }
 ```
 
-In <code>main.cpp</code>, run <code> MyApplication</code> as such:
+Finally, in *main.cpp*, run *MyApplication* as such:
 ```C++
 #include "MyApplication.h"
 
 int main ()
 {
+    // some code above
+
     GLFWwindow* window = glfwCreateWindow(1280, 768, "Window", NULL, NULL);
 
     MyApplication app(window, "settings.toml");
     app.Initialize();
     app.Run();
+
+    // some code below
 }
 ```
 
