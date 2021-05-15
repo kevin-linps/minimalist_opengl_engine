@@ -44,6 +44,9 @@ Texture::Texture(std::string file)
 void Texture::Activate(GLuint texture_unit)
 {
     GLuint unit = GL_TEXTURE0 + texture_unit;
-    glActiveTexture(unit);
-    glBindTexture(GL_TEXTURE_2D, id_);
+    if (unit < GL_MAX_TEXTURE_UNITS) 
+    {
+        glActiveTexture(unit);
+        glBindTexture(GL_TEXTURE_2D, id_);
+    }
 }
